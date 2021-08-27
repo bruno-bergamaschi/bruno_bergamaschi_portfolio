@@ -24,7 +24,8 @@ dependencies:
   flutter:
     sdk: flutter
   url_launcher: ^6.0.9
-
+  ionicons: ^0.1.2
+  font_awesome_flutter: ^9.1.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -51,6 +52,20 @@ flutter:
   - assets/images/contatos/github-efeito.png
   - assets/images/contatos/instagram-icon-efeito.png
   - assets/images/contatos/linkedin-icon-efeito.png
+  - assets/images/tecnologias/html.png
+  - assets/images/tecnologias/css.png
+  - assets/images/tecnologias/js.png
+  - assets/images/tecnologias/bootstrap.png
+  - assets/images/tecnologias/react.png
+  - assets/images/tecnologias/dart.png
+  - assets/images/tecnologias/flutter.png
+  - assets/images/tecnologias/firebase.png
+  - assets/images/tecnologias/git.png
+  - assets/images/tecnologias/github.png
+  - assets/images/projetos/soul-cine.png
+  - assets/images/projetos/calc-tudo.png
+  - assets/images/projetos/lucas-cardoso-nutricionista.png
+  - assets/images/projetos/moto-taxi-cooperativa.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
