@@ -1,8 +1,11 @@
 import 'package:bruno_bergamaschi_portfolio/pages/portfolio.dart';
+import 'package:bruno_bergamaschi_portfolio/provider/theme_provider.dart';
+import 'package:bruno_bergamaschi_portfolio/widgets/change_theme_button_widget.dart';
 import 'package:bruno_bergamaschi_portfolio/widgets/texto_box.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Home extends StatefulWidget {
@@ -13,33 +16,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  Color button = Color.fromRGBO(239, 131, 84, 1);
-  Color bg = Color.fromRGBO(45, 49, 66, 1);
-  Color grayBox = Color.fromRGBO(191, 192, 192, 1);
-  Color lightBox = Color.fromRGBO(255, 255, 255, 1);
-  Color darkText = Color.fromRGBO(45, 49, 66, 1);
-  Color lightText = Color.fromRGBO(255, 255, 255, 1);
-
-  // void launchWhatsApp({
-  //   @required String? phone,
-  //   @required String? message,
-  // }) async {
-  //   String url() {
-  //     if (Platform.isIOS) {
-  //       return "whatsapp://wa.me/$phone/?text=${message!}";
-  //     } else {
-  //       return ("whatsapp://send?phone=$phone&text=${message!}");
-  //     }
-  //   }
-
-  //   print(url());
-
-  //   if (await canLaunch(url())) {
-  //     await launch(url());
-  //   } else {
-  //     throw 'Could not launch ${url()}';
-  //   }
-  // }
   openwhatsapp(String num, String texto) async {
     var whatsapp = num;
     var mensagem = texto;
@@ -56,10 +32,24 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    final themeMode =
+        Provider.of<ThemeProvider>(context).themeMode == ThemeMode.dark
+            ? 'DarkTheme'
+            : 'LightTheme';
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+        title: Text(
+          '$themeMode',
+          style: Theme.of(context).textTheme.headline1,
+        ),
+        actions: [
+          ChangeThemeButtonWidget(),
+        ],
+      ),
       body: Container(
-        color: bg,
-        padding: EdgeInsets.all(30),
+        color: Theme.of(context).scaffoldBackgroundColor,
+        padding: EdgeInsets.all(20),
         child: Column(
           children: [
             Row(
@@ -67,9 +57,8 @@ class _HomeState extends State<Home> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
-                  width: 200,
-                  height: 200,
-                  margin: EdgeInsets.fromLTRB(0, 80, 0, 0),
+                  width: 180,
+                  height: 180,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.vertical(
                       top: Radius.circular(100),
@@ -85,22 +74,21 @@ class _HomeState extends State<Home> {
             Column(
               children: [
                 Container(
-                  margin: EdgeInsets.only(top: 50),
+                  margin: EdgeInsets.only(top: 15),
                   child: Text(
                     'Olá, eu sou o Bruno \\o',
-                    style: TextStyle(fontSize: 25),
+                    style: TextStyle(fontSize: 30),
                   ),
                 ),
                 Container(
-                    margin: EdgeInsets.symmetric(vertical: 30),
+                    margin: EdgeInsets.symmetric(vertical: 20),
                     padding: EdgeInsets.all(25),
                     decoration: BoxDecoration(
-                        color: lightBox,
+                        color: Theme.of(context).cardColor,
                         border: Border(),
                         borderRadius: BorderRadius.circular(10)),
                     child: TextoBox(
-                        'Bem-vindo ao meu portfólio. Aqui você poderá saber um pouco mais sobre mim e minha jornada no mundo da tecnologia.',
-                        darkText)),
+                        'Bem-vindo ao meu portfólio. Aqui você poderá saber um pouco mais sobre mim e minha jornada no mundo da tecnologia.')),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -114,10 +102,14 @@ class _HomeState extends State<Home> {
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
                             vertical: 20, horizontal: 50),
-                        child: Text('Porfólio'),
+                        child: Text(
+                          'Porfólio',
+                          style: Theme.of(context).textTheme.button,
+                        ),
                       ),
                       style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(button),
+                        backgroundColor: MaterialStateProperty.all(
+                            Theme.of(context).buttonColor),
                       ),
                     ),
                   ],
@@ -127,11 +119,20 @@ class _HomeState extends State<Home> {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                FloatingActionButton(
-                  onPressed: () =>
-                      // launchWhatsApp(phone: '555195887955', message: 'Olá!'),
-                      openwhatsapp('555195887955', 'Ola!'),
-                  child: FaIcon(FontAwesomeIcons.whatsapp),
+                Padding(
+                  padding: const EdgeInsets.only(top: 20),
+                  child: FloatingActionButton(
+                    onPressed: () =>
+                        // launchWhatsApp(phone: '555195887955', message: 'Olá!'),
+                        openwhatsapp('555195887955', 'Ola!'),
+                    child: FaIcon(
+                      FontAwesomeIcons.whatsapp,
+                      color: Theme.of(context).iconTheme.color,
+                    ),
+                    backgroundColor: Theme.of(context)
+                        .floatingActionButtonTheme
+                        .backgroundColor,
+                  ),
                 ),
               ],
             )

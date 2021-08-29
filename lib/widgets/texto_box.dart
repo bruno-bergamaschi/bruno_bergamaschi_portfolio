@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 
 class TextoBox extends StatefulWidget {
   final String texto;
-  final Color color;
 
-  TextoBox(this.texto, this.color);
+  TextoBox(this.texto);
 
   @override
   _TextoBoxState createState() => _TextoBoxState();
@@ -17,7 +16,7 @@ class _TextoBoxState extends State<TextoBox> {
       padding: EdgeInsets.all(10),
       child: Text(
         widget.texto,
-        style: TextStyle(color: widget.color, fontSize: 16),
+        style: Theme.of(context).textTheme.bodyText1,
         textAlign: TextAlign.justify,
       ),
     );

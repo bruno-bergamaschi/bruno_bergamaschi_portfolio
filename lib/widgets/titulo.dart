@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 
 class Titulo extends StatefulWidget {
   final String texto;
-  final Color corBox;
-  final Color corTexto;
 
-  Titulo(this.texto, this.corBox, this.corTexto);
+  Titulo(this.texto);
 
   @override
   _TituloState createState() => _TituloState();
@@ -19,13 +17,10 @@ class _TituloState extends State<Titulo> {
       children: [
         Container(
           padding: EdgeInsets.symmetric(vertical: 20),
-          color: widget.corBox,
+          color: Theme.of(context).bannerTheme.backgroundColor,
           child: Text(
             widget.texto,
-            style: TextStyle(
-              color: widget.corTexto,
-              fontSize: 25,
-            ),
+            style: Theme.of(context).textTheme.headline2,
             textAlign: TextAlign.center,
           ),
         )

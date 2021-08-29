@@ -1,5 +1,7 @@
 import 'package:bruno_bergamaschi_portfolio/pages/home.dart';
+import 'package:bruno_bergamaschi_portfolio/provider/theme_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(MyApp());
@@ -8,17 +10,18 @@ void main() {
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.dark(
-            primary: Color.fromRGBO(41, 50, 65, 1),
-            secondary: Color.fromRGBO(238, 108, 77, 1)),
-        primarySwatch: Colors.blue,
-      ),
-      home: Home(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
+  Widget build(BuildContext context) => ChangeNotifierProvider(
+        create: (contex) => ThemeProvider(),
+        builder: (context, _) {
+          final themeProvider = Provider.of<ThemeProvider>(context);
+          return MaterialApp(
+            title: 'Flutter Demo',
+            themeMode: themeProvider.themeMode,
+            theme: MyThemes.lightTheme,
+            darkTheme: MyThemes.darkTheme,
+            home: Home(),
+            debugShowCheckedModeBanner: false,
+          );
+        },
+      );
 }

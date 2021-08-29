@@ -1,3 +1,4 @@
+import 'package:bruno_bergamaschi_portfolio/widgets/change_theme_button_widget.dart';
 import 'package:bruno_bergamaschi_portfolio/widgets/imagem.dart';
 import 'package:bruno_bergamaschi_portfolio/widgets/texto_box.dart';
 import 'package:bruno_bergamaschi_portfolio/widgets/titulo.dart';
@@ -12,32 +13,31 @@ class Portfolio extends StatefulWidget {
 }
 
 class _PortfolioState extends State<Portfolio> {
-  Color bg = Color.fromRGBO(45, 49, 66, 1);
-  Color grayBox = Color.fromRGBO(191, 192, 192, 1);
-  Color lightBox = Color.fromRGBO(255, 255, 255, 1);
-  Color darkText = Color.fromRGBO(45, 49, 66, 1);
-  Color lightText = Color.fromRGBO(255, 255, 255, 1);
-  Color tituloColor = Color.fromRGBO(239, 131, 84, 1);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: bg,
-        title: Text('Portfolio'),
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+        title: Text(
+          'Portfólio',
+          style: Theme.of(context).textTheme.headline1,
+        ),
         centerTitle: true,
+        actions: [
+          ChangeThemeButtonWidget(),
+        ],
       ),
       body: Container(
-        color: bg,
+        color: Theme.of(context).scaffoldBackgroundColor,
         child: ListView(
           physics: BouncingScrollPhysics(),
           children: [
             Column(
               children: [
-                Titulo('Quem sou eu?', tituloColor, darkText),
+                Titulo('Quem sou eu?'),
                 Container(
                   decoration: BoxDecoration(
-                    color: lightBox,
+                    color: Theme.of(context).cardColor,
                     border: Border(),
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -46,27 +46,24 @@ class _PortfolioState extends State<Portfolio> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      TextoBox('Olá,', darkText),
+                      TextoBox('Olá,'),
                       TextoBox(
-                          'Sou o Bruno Bergamaschi, tenho 28 ano e moro em Porto Alegre - RS. Vivo com minha esposa Aline (meu tesourinho) e com nossa doguinha dora <3',
-                          darkText),
+                        'Sou o Bruno Bergamaschi, tenho 28 anos e moro em Porto Alegre - RS com minha esposa Aline (meu tesourinho) e com nossa doguinha dora <3',
+                      ),
                       TextoBox(
-                          'Sou apaixonado por programação desde 2013, quando iniciei uma graduação de Jogos Digitais (levado por uma outra paixão, jogar). Acabei não concluído a graduação, porém foi o suficiente para despertar um sonho (ser um desenvolvedor).',
-                          darkText),
+                        'Apaixonado por programação, estou na trilha para me tornar um desenvolvedor.',
+                      ),
                       TextoBox(
-                          'Esse sonho foi guardado em uma caixinha por questões de escolha de trilhas na época, porém em 2019 retornei os estudos e desde então venho em busca de realizar.',
-                          darkText),
-                      TextoBox(
-                          'Encontrei a SoulCode (por indicação da minha esposa) e agora sigo na busca da realização desse sonho.',
-                          darkText),
-                      TextoBox('Prazer :D', darkText),
+                        'Estudante de Front-end desde 2019 e atualmente aluno da SoulCode Academy na turma de Front-end e Mobile.',
+                      ),
+                      TextoBox('Prazer :D'),
                     ],
                   ),
                 ),
-                Titulo('Metas para o futuro', tituloColor, darkText),
+                Titulo('Metas para o futuro'),
                 Container(
                   decoration: BoxDecoration(
-                    color: lightBox,
+                    color: Theme.of(context).cardColor,
                     border: Border(),
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -75,21 +72,21 @@ class _PortfolioState extends State<Portfolio> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
+                      TextoBox('- Concluir o curso da SoulCode Academy'),
                       TextoBox(
-                          '- Concluir o curso da SoulCode Academy', darkText),
-                      TextoBox('- Ingressar no mercado de desenvolvimento',
-                          darkText),
+                        '- Ingressar no mercado de desenvolvimento',
+                      ),
                       TextoBox(
-                          '- Retornar à graduação, para Análise e Desenvolvimento de Sistemas',
-                          darkText),
-                      TextoBox('- Iniciar um curso de inglês', darkText),
+                        '- Retornar à graduação, para Análise e Desenvolvimento de Sistemas',
+                      ),
+                      TextoBox('- Iniciar um curso de inglês'),
                       TextoBox(
-                          '- Me tornar um bom desenvolvedor, com inglês razoável para conseguir morar no exterior',
-                          darkText),
+                        '- Me tornar um bom desenvolvedor, com inglês razoável para conseguir morar no exterior',
+                      ),
                     ],
                   ),
                 ),
-                Titulo('Tecnologias', tituloColor, darkText),
+                Titulo('Tecnologias'),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -150,10 +147,10 @@ class _PortfolioState extends State<Portfolio> {
                   ],
                 ),
                 //PROJETOS
-                Titulo('Projetos', tituloColor, darkText),
+                Titulo('Projetos'),
                 Container(
                   decoration: BoxDecoration(
-                    color: lightBox,
+                    color: Theme.of(context).cardColor,
                     border: Border(),
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -164,17 +161,19 @@ class _PortfolioState extends State<Portfolio> {
                     children: [
                       Imagem('assets/images/projetos/soul-cine.png', 100),
                       TextoBox(
-                          'Projeto web desenvolvido para praticar as tecnologias estudadas na SoulCode Academy.',
-                          darkText),
-                      InkWell(
-                        child:
-                            TextoBox('Ver projeto completo', Colors.blueAccent),
-                        onTap: () {
+                          'Projeto web desenvolvido para praticar as tecnologias estudadas na SoulCode Academy.'),
+                      ElevatedButton(
+                        onPressed: () {
                           launch(
                               'https://github.com/bruno-bergamaschi/Projeto-SoulCine');
                         },
+                        child: Text('Ver projeto completo'),
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                              Theme.of(context).buttonColor),
+                        ),
                       ),
-                      TextoBox('Tecnologias utilizadas:', darkText),
+                      TextoBox('Tecnologias utilizadas:'),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -189,7 +188,7 @@ class _PortfolioState extends State<Portfolio> {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                    color: lightBox,
+                    color: Theme.of(context).cardColor,
                     border: Border(),
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -200,17 +199,19 @@ class _PortfolioState extends State<Portfolio> {
                     children: [
                       Imagem('assets/images/projetos/calc-tudo.png', 100),
                       TextoBox(
-                          'Projeto web desenvolvido para praticar as tecnologias estudadas na SoulCode Academy.',
-                          darkText),
-                      InkWell(
-                        child:
-                            TextoBox('Ver projeto completo', Colors.blueAccent),
-                        onTap: () {
+                          'Projeto web desenvolvido para praticar as tecnologias estudadas na SoulCode Academy.'),
+                      ElevatedButton(
+                        onPressed: () {
                           launch(
                               'https://bruno-bergamaschi.github.io/projetoJavascript-calcTudo/');
                         },
+                        child: Text('Ver projeto completo'),
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                              Theme.of(context).buttonColor),
+                        ),
                       ),
-                      TextoBox('Tecnologias utilizadas:', darkText),
+                      TextoBox('Tecnologias utilizadas:'),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -226,7 +227,7 @@ class _PortfolioState extends State<Portfolio> {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                    color: lightBox,
+                    color: Theme.of(context).cardColor,
                     border: Border(),
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -239,17 +240,19 @@ class _PortfolioState extends State<Portfolio> {
                           'assets/images/projetos/lucas-cardoso-nutricionista.png',
                           100),
                       TextoBox(
-                          'Projeto web desenvolvido em equipe, para um cliente real em parceria com a SoulCode.',
-                          darkText),
-                      InkWell(
-                        child:
-                            TextoBox('Ver projeto completo', Colors.blueAccent),
-                        onTap: () {
+                          'Projeto web desenvolvido em equipe, para um cliente real em parceria com a SoulCode.'),
+                      ElevatedButton(
+                        onPressed: () {
                           launch(
                               'https://bruno-bergamaschi.github.io/projetoBootstrap/');
                         },
+                        child: Text('Ver projeto completo'),
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                              Theme.of(context).buttonColor),
+                        ),
                       ),
-                      TextoBox('Tecnologias utilizadas:', darkText),
+                      TextoBox('Tecnologias utilizadas:'),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -266,7 +269,7 @@ class _PortfolioState extends State<Portfolio> {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                    color: lightBox,
+                    color: Theme.of(context).cardColor,
                     border: Border(),
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -278,17 +281,19 @@ class _PortfolioState extends State<Portfolio> {
                       Imagem('assets/images/projetos/moto-taxi-cooperativa.png',
                           130),
                       TextoBox(
-                          'Projeto mobile desenvolvido em equipe, para um cliente real em parceria com a SoulCode.',
-                          darkText),
-                      InkWell(
-                        child:
-                            TextoBox('Ver projeto completo', Colors.blueAccent),
-                        onTap: () {
+                          'Projeto mobile desenvolvido em equipe, para um cliente real em parceria com a SoulCode.'),
+                      ElevatedButton(
+                        onPressed: () {
                           launch(
                               'https://github.com/bruno-bergamaschi/appMotoTaxi-Cooperativa');
                         },
+                        child: Text('Ver projeto completo'),
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                              Theme.of(context).buttonColor),
+                        ),
                       ),
-                      TextoBox('Tecnologias utilizadas:', darkText),
+                      TextoBox('Tecnologias utilizadas:'),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -303,7 +308,7 @@ class _PortfolioState extends State<Portfolio> {
                   ),
                 ),
                 //CONTATOS
-                Titulo('Contatos', tituloColor, darkText),
+                Titulo('Contatos'),
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: Row(
@@ -311,7 +316,7 @@ class _PortfolioState extends State<Portfolio> {
                     children: [
                       InkWell(
                         child: Imagem(
-                          'assets/images/contatos/github-efeito.png',
+                          'assets/images/contatos/github-icon.png',
                           80,
                         ),
                         onTap: () =>
@@ -319,7 +324,7 @@ class _PortfolioState extends State<Portfolio> {
                       ),
                       InkWell(
                         child: Imagem(
-                          'assets/images/contatos/linkedin-icon-efeito.png',
+                          'assets/images/contatos/linkedin-icon.png',
                           80,
                         ),
                         onTap: () => launch(
@@ -327,7 +332,7 @@ class _PortfolioState extends State<Portfolio> {
                       ),
                       InkWell(
                         child: Imagem(
-                          'assets/images/contatos/instagram-icon-efeito.png',
+                          'assets/images/contatos/instagram-icon.png',
                           80,
                         ),
                         onTap: () => launch(
