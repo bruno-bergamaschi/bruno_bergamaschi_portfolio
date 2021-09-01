@@ -44,10 +44,10 @@ class MyThemes {
     ),
     buttonColor: Color.fromRGBO(230, 57, 70, 1),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
-        backgroundColor: Color.fromRGBO(241, 250, 238, 1)),
+        backgroundColor: Color.fromRGBO(237, 242, 244, 1)),
     backgroundColor: Color.fromRGBO(29, 53, 87, 1),
     cardColor: Color.fromRGBO(43, 45, 66, 1),
-    primaryColor: Color.fromRGBO(29, 53, 87, 1),
+    primaryColor: Color.fromRGBO(230, 57, 70, 1),
     iconTheme: IconThemeData(
       color: Color.fromRGBO(43, 45, 66, 1),
     ),
@@ -85,15 +85,15 @@ class MyThemes {
       ),
     ),
     appBarTheme: AppBarTheme(
-      backgroundColor: Color.fromRGBO(141, 153, 174, 1),
+      backgroundColor: Color.fromRGBO(229, 229, 229, 1),
     ),
     buttonColor: Color.fromRGBO(230, 57, 70, 1),
     textButtonTheme: TextButtonThemeData(),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
-      backgroundColor: Color.fromRGBO(0, 8, 20, 1),
+      backgroundColor: Color.fromRGBO(43, 45, 66, 1),
     ),
     backgroundColor: Color.fromRGBO(241, 250, 238, 1),
-    cardColor: Color.fromRGBO(141, 153, 174, 1),
+    cardColor: Color.fromRGBO(229, 229, 229, 1),
     primaryColor: Color.fromRGBO(230, 57, 70, 1),
     iconTheme: IconThemeData(
       color: Color.fromRGBO(241, 250, 238, 1),

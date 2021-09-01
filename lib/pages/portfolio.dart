@@ -1,8 +1,11 @@
+import 'package:bruno_bergamaschi_portfolio/provider/theme_provider.dart';
 import 'package:bruno_bergamaschi_portfolio/widgets/change_theme_button_widget.dart';
 import 'package:bruno_bergamaschi_portfolio/widgets/imagem.dart';
 import 'package:bruno_bergamaschi_portfolio/widgets/texto_box.dart';
 import 'package:bruno_bergamaschi_portfolio/widgets/titulo.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Portfolio extends StatefulWidget {
@@ -13,8 +16,23 @@ class Portfolio extends StatefulWidget {
 }
 
 class _PortfolioState extends State<Portfolio> {
+  List<String> imagens = [
+    'assets/images/tecnologias/html.png',
+    'assets/images/tecnologias/css.png',
+    'assets/images/tecnologias/js.png',
+    'assets/images/tecnologias/bootstrap.png',
+    'assets/images/tecnologias/react.png',
+    'assets/images/tecnologias/dart.png',
+    'assets/images/tecnologias/flutter.png',
+    'assets/images/tecnologias/firebase.png',
+    'assets/images/tecnologias/git.png',
+    'assets/images/tecnologias/github.png',
+  ];
+
   @override
   Widget build(BuildContext context) {
+    final themeOn = Provider.of<ThemeProvider>(context).themeMode;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
@@ -41,14 +59,14 @@ class _PortfolioState extends State<Portfolio> {
                     border: Border(),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  margin: EdgeInsets.all(30),
-                  padding: EdgeInsets.all(30),
+                  margin: EdgeInsets.all(20),
+                  padding: EdgeInsets.all(20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       TextoBox('Olá,'),
                       TextoBox(
-                        'Sou o Bruno Bergamaschi, tenho 28 anos e moro em Porto Alegre - RS com minha esposa Aline (meu tesourinho) e com nossa doguinha dora <3',
+                        'Sou o Bruno Bergamaschi, tenho 28 anos e moro em Porto Alegre - RS com minha esposa Aline (meu tesourinho) e com nossa doguinha Dora <3',
                       ),
                       TextoBox(
                         'Apaixonado por programação, estou na trilha para me tornar um desenvolvedor.',
@@ -67,84 +85,144 @@ class _PortfolioState extends State<Portfolio> {
                     border: Border(),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  margin: EdgeInsets.all(30),
-                  padding: EdgeInsets.all(30),
+                  margin: EdgeInsets.all(20),
+                  padding: EdgeInsets.all(20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      TextoBox('- Concluir o curso da SoulCode Academy'),
-                      TextoBox(
-                        '- Ingressar no mercado de desenvolvimento',
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(right: 10),
+                            child: themeOn == ThemeMode.dark
+                                ? FaIcon(
+                                    FontAwesomeIcons.empire,
+                                    size: 30,
+                                    color: Colors.red,
+                                  )
+                                : FaIcon(
+                                    FontAwesomeIcons.jediOrder,
+                                    size: 30,
+                                    color: Colors.red,
+                                  ),
+                          ),
+                          Expanded(
+                            child: TextoBox(
+                              'Concluir o curso da SoulCode Academy',
+                            ),
+                          ),
+                        ],
                       ),
-                      TextoBox(
-                        '- Retornar à graduação, para Análise e Desenvolvimento de Sistemas',
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(right: 10),
+                            child: themeOn == ThemeMode.dark
+                                ? FaIcon(
+                                    FontAwesomeIcons.empire,
+                                    size: 30,
+                                    color: Colors.red,
+                                  )
+                                : FaIcon(
+                                    FontAwesomeIcons.jediOrder,
+                                    size: 30,
+                                    color: Colors.red,
+                                  ),
+                          ),
+                          Expanded(
+                            child: TextoBox(
+                              'Ingressar no mercado de desenvolvimento',
+                            ),
+                          ),
+                        ],
                       ),
-                      TextoBox('- Iniciar um curso de inglês'),
-                      TextoBox(
-                        '- Me tornar um bom desenvolvedor, com inglês razoável para conseguir morar no exterior',
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(right: 10),
+                            child: themeOn == ThemeMode.dark
+                                ? FaIcon(
+                                    FontAwesomeIcons.empire,
+                                    size: 30,
+                                    color: Colors.red,
+                                  )
+                                : FaIcon(
+                                    FontAwesomeIcons.jediOrder,
+                                    size: 30,
+                                    color: Colors.red,
+                                  ),
+                          ),
+                          Expanded(
+                            child: TextoBox(
+                              'Retornar à graduação, para Análise e Desenvolvimento de Sistemas',
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(right: 10),
+                            child: themeOn == ThemeMode.dark
+                                ? FaIcon(
+                                    FontAwesomeIcons.empire,
+                                    size: 30,
+                                    color: Colors.red,
+                                  )
+                                : FaIcon(
+                                    FontAwesomeIcons.jediOrder,
+                                    size: 30,
+                                    color: Colors.red,
+                                  ),
+                          ),
+                          Expanded(
+                            child: TextoBox(
+                              'Iniciar um curso de inglês',
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(right: 10),
+                            child: themeOn == ThemeMode.dark
+                                ? FaIcon(
+                                    FontAwesomeIcons.empire,
+                                    size: 30,
+                                    color: Colors.red,
+                                  )
+                                : FaIcon(
+                                    FontAwesomeIcons.jediOrder,
+                                    size: 30,
+                                    color: Colors.red,
+                                  ),
+                          ),
+                          Expanded(
+                            child: TextoBox(
+                              'Me tornar um bom desenvolvedor, com inglês razoável para conseguir morar no exterior',
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
                 ),
+                //TECNOLOGIAS
                 Titulo('Tecnologias'),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(0, 30, 0, 10),
-                      child: Row(
-                        children: [
-                          Imagem('assets/images/tecnologias/html.png', 120),
-                          Imagem('assets/images/tecnologias/css.png', 120),
-                          Imagem('assets/images/tecnologias/js.png', 120),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
-                      child: Row(
-                        children: [
-                          Imagem(
-                              'assets/images/tecnologias/bootstrap.png', 120),
-                          Imagem('assets/images/tecnologias/react.png', 120),
-                          Imagem('assets/images/tecnologias/dart.png', 120),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
-                      child: Row(
-                        children: [
-                          Imagem('assets/images/tecnologias/flutter.png', 120),
-                          Imagem('assets/images/tecnologias/firebase.png', 120),
-                          Imagem('assets/images/tecnologias/git.png', 120),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(0, 10, 0, 30),
-                      child: Row(
-                        children: [
-                          Imagem('assets/images/tecnologias/github.png', 120),
-                        ],
-                      ),
-                    ),
-                  ],
+                Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: GridView.builder(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 3),
+                      itemCount: imagens.length,
+                      shrinkWrap: true,
+                      physics: BouncingScrollPhysics(),
+                      itemBuilder: (BuildContext context, int index) {
+                        return Card(
+                          child: Image.asset(imagens[index]),
+                        );
+                      }),
                 ),
                 //PROJETOS
                 Titulo('Projetos'),
@@ -154,7 +232,7 @@ class _PortfolioState extends State<Portfolio> {
                     border: Border(),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  margin: EdgeInsets.fromLTRB(30, 30, 30, 0),
+                  margin: EdgeInsets.fromLTRB(20, 20, 20, 0),
                   padding: EdgeInsets.all(30),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -167,7 +245,10 @@ class _PortfolioState extends State<Portfolio> {
                           launch(
                               'https://github.com/bruno-bergamaschi/Projeto-SoulCine');
                         },
-                        child: Text('Ver projeto completo'),
+                        child: Text(
+                          'Ver projeto completo',
+                          style: Theme.of(context).textTheme.button,
+                        ),
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(
                               Theme.of(context).buttonColor),
@@ -192,7 +273,7 @@ class _PortfolioState extends State<Portfolio> {
                     border: Border(),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  margin: EdgeInsets.fromLTRB(30, 30, 30, 0),
+                  margin: EdgeInsets.fromLTRB(20, 20, 20, 0),
                   padding: EdgeInsets.all(30),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -205,7 +286,10 @@ class _PortfolioState extends State<Portfolio> {
                           launch(
                               'https://bruno-bergamaschi.github.io/projetoJavascript-calcTudo/');
                         },
-                        child: Text('Ver projeto completo'),
+                        child: Text(
+                          'Ver projeto completo',
+                          style: Theme.of(context).textTheme.button,
+                        ),
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(
                               Theme.of(context).buttonColor),
@@ -231,7 +315,7 @@ class _PortfolioState extends State<Portfolio> {
                     border: Border(),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  margin: EdgeInsets.fromLTRB(30, 30, 30, 0),
+                  margin: EdgeInsets.fromLTRB(20, 20, 20, 0),
                   padding: EdgeInsets.all(30),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -246,7 +330,10 @@ class _PortfolioState extends State<Portfolio> {
                           launch(
                               'https://bruno-bergamaschi.github.io/projetoBootstrap/');
                         },
-                        child: Text('Ver projeto completo'),
+                        child: Text(
+                          'Ver projeto completo',
+                          style: Theme.of(context).textTheme.button,
+                        ),
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(
                               Theme.of(context).buttonColor),
@@ -273,7 +360,7 @@ class _PortfolioState extends State<Portfolio> {
                     border: Border(),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  margin: EdgeInsets.all(30),
+                  margin: EdgeInsets.all(20),
                   padding: EdgeInsets.all(30),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -287,7 +374,10 @@ class _PortfolioState extends State<Portfolio> {
                           launch(
                               'https://github.com/bruno-bergamaschi/appMotoTaxi-Cooperativa');
                         },
-                        child: Text('Ver projeto completo'),
+                        child: Text(
+                          'Ver projeto completo',
+                          style: Theme.of(context).textTheme.button,
+                        ),
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(
                               Theme.of(context).buttonColor),

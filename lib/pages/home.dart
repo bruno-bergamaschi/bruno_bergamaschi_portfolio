@@ -1,16 +1,12 @@
 import 'package:bruno_bergamaschi_portfolio/pages/portfolio.dart';
-import 'package:bruno_bergamaschi_portfolio/provider/theme_provider.dart';
 import 'package:bruno_bergamaschi_portfolio/widgets/change_theme_button_widget.dart';
 import 'package:bruno_bergamaschi_portfolio/widgets/texto_box.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Home extends StatefulWidget {
-  Home({Key? key}) : super(key: key);
-
   @override
   _HomeState createState() => _HomeState();
 }
@@ -32,17 +28,9 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    final themeMode =
-        Provider.of<ThemeProvider>(context).themeMode == ThemeMode.dark
-            ? 'DarkTheme'
-            : 'LightTheme';
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
-        title: Text(
-          '$themeMode',
-          style: Theme.of(context).textTheme.headline1,
-        ),
         actions: [
           ChangeThemeButtonWidget(),
         ],
@@ -76,7 +64,7 @@ class _HomeState extends State<Home> {
                 Container(
                   margin: EdgeInsets.only(top: 15),
                   child: Text(
-                    'Olá, eu sou o Bruno \\o',
+                    'Olá, eu sou o Bruno!',
                     style: TextStyle(fontSize: 30),
                   ),
                 ),
@@ -88,7 +76,7 @@ class _HomeState extends State<Home> {
                         border: Border(),
                         borderRadius: BorderRadius.circular(10)),
                     child: TextoBox(
-                        'Bem-vindo ao meu portfólio. Aqui você poderá saber um pouco mais sobre mim e minha jornada no mundo da tecnologia.')),
+                        'Bem-vindo ao meu portfólio. Aqui você poderá saber um pouco mais sobre mim e minha jornada no mundo do desenvolvimento.')),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -103,7 +91,7 @@ class _HomeState extends State<Home> {
                         padding: const EdgeInsets.symmetric(
                             vertical: 20, horizontal: 50),
                         child: Text(
-                          'Porfólio',
+                          'Portfólio',
                           style: Theme.of(context).textTheme.button,
                         ),
                       ),
@@ -128,6 +116,7 @@ class _HomeState extends State<Home> {
                     child: FaIcon(
                       FontAwesomeIcons.whatsapp,
                       color: Theme.of(context).iconTheme.color,
+                      size: 30,
                     ),
                     backgroundColor: Theme.of(context)
                         .floatingActionButtonTheme
